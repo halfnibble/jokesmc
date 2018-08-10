@@ -1,0 +1,10 @@
+name: Jokes
+version: ${project.version}
+main: com.halfnibble.jokes.Jokes
+authors: [halfnibble]
+description: A plugin to fetch and display jokes in game.
+website: halfnibble.com
+commands:
+  joke:
+    description: Retrieves a funny joke!
+
