@@ -4,6 +4,7 @@ This plugin makes use of the `icanhazdadjoke.com` api to retrieve fresh dad joke
 
 ## Updates
 
+Changed to use Spigot 1.19.2 SNAPSHOT. 2022-09-03.
 Updated to support Minecraft 1.15.2. 2020-05-28.
 
 ## Installation

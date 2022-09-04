@@ -16,7 +16,6 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-
 public final class Jokes extends JavaPlugin {
     private Logger LOG = getLogger();
 
@@ -30,6 +29,7 @@ public final class Jokes extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        LOG.info("Disabling yonder shields.");
     }
 
     @Override
@@ -49,8 +49,11 @@ public final class Jokes extends JavaPlugin {
             conn.addRequestProperty("Accept", "application/json");
             conn.addRequestProperty("User-Agent", "Mozilla/4.0");
             InputStream input = conn.getInputStream();
-            String response = new Scanner(input, "UTF-8").useDelimiter("\\A").next();
-            JsonObject jsonObject = (JsonObject) new JsonParser().parse(response);
+            Scanner scanner = new Scanner(input, "UTF-8");
+            scanner.useDelimiter("\\A");
+            String response = scanner.next();
+            scanner.close();
+            JsonObject jsonObject = JsonParser.parseString(response).getAsJsonObject();
             String joke = jsonObject.getAsJsonPrimitive("joke").getAsString();
             String formatJoke = ChatColor.GREEN + "[" + name + "'s dad] " + ChatColor.YELLOW + joke;
             LOG.info(formatJoke);
